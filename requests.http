@@ -1,0 +1,77 @@
+### Create a new user with the Admin role
+POST http://localhost:5059/register
+Content-Type: application/json
+
+{
+  "email": "adminuser@example.com",
+  "password": "Admin@12345",
+  "role": "Admin"
+} 
+
+### Create a new user with the User role
+POST http://localhost:5059/register
+Content-Type: application/json
+
+{
+  "email": "regularuser@example.com",
+  "password": "User@12345",
+  "role": "User"
+}
+
+### Create a new user with the Guest role
+POST http://localhost:5059/register
+Content-Type: application/json
+
+{
+  "email": "guestuser@example.com",
+  "password": "Guest@12345",
+  "role": "Guest"
+}
+
+### Log in as Admin user
+POST http://localhost:5059/login
+Content-Type: application/json
+
+{
+  "email": "adminuser@example.com",
+  "password": "Admin@12345"
+}
+
+### Log in as Regular user
+POST http://localhost:5059/login
+Content-Type: application/json
+
+{
+  "email": "regularuser@example.com",
+  "password": "User@12345"
+}
+
+### Log in as Guest user
+POST http://localhost:5059/login
+Content-Type: application/json
+
+{
+  "email": "guestuser@example.com",
+  "password": "Guest@12345"
+}
+
+### Access the unprotected root route
+GET http://localhost:5059/
+
+### Attempt to access the protected route without token
+GET http://localhost:5059/protected
+
+### Access the protected route with a valid token from any user(replace <token> with your JWT token)
+GET http://localhost:5059/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW51c2VyQGV4YW1wbGUuY29tIiwic3ViIjoiYWRtaW51c2VyQGV4YW1wbGUuY29tIiwianRpIjoiNzJkZTE0YjctYTM3My00ZGRhLWEzNWEtNWNlZmEyOTA5ZGI1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQxNzUyMzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTA1OSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTA1OS91c2VycyJ9.5DCacy92OTgvqnoYqxAtm4drXAtpMwaDfzUIT52a1CY
+
+### Access the Admin-protected route (replace <token> with Admin's JWT token)
+GET http://localhost:5059/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW51c2VyQGV4YW1wbGUuY29tIiwic3ViIjoiYWRtaW51c2VyQGV4YW1wbGUuY29tIiwianRpIjoiNzJkZTE0YjctYTM3My00ZGRhLWEzNWEtNWNlZmEyOTA5ZGI1IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE3NDQxNzUyMzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTA1OSIsImF1ZCI6Imh0dHA6Ly9sb2NhbGhvc3Q6NTA1OS91c2VycyJ9.5DCacy92OTgvqnoYqxAtm4drXAtpMwaDfzUIT52a1CY
+
+### Access the User-protected route (replace <token> with User's JWT token)
+GET http://localhost:5059/user
+Authorization: Bearer <token>
+### Access the Guest-protected route (replace <token> with Guest's JWT token)
+GET http://localhost:5059/guest
+Authorization: Bearer <token>
